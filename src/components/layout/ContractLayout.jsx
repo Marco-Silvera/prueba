@@ -1,5 +1,6 @@
 import Header from "./header";
 
+
 function ContractLayout({ children }) {
     return (
         <div className="flex flex-col h-screen">
