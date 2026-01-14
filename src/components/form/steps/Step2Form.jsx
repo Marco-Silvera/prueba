@@ -7,9 +7,6 @@ function Step2Form({ openTooltipId, setOpenTooltipId }) {
 
     return (
         <div>
-            <h2 className="text-lg font-semibold mb-4">
-                Paso 2 - Información adicional
-            </h2>
             <SelectField
                 id="paymentMethod"
                 name="paymentMethod"
@@ -31,7 +28,6 @@ function Step2Form({ openTooltipId, setOpenTooltipId }) {
                 openTooltipId={openTooltipId}
                 setOpenTooltipId={setOpenTooltipId}
             />
-            {/* Aquí puedes agregar más campos para el paso 2 */}
         </div>
     );
 }

@@ -3,7 +3,7 @@ function Header() {
     return (
         <header className="w-full border-b border-gray-300 flex justify-center bg-white">
             <div className="h-[50px] w-full max-w-[1482px] flex justify-between">
-                <div className="h-full w-full max-w-[252px] bg-primary flex items-center justify-center">
+                <div className="h-full w-full max-w-[252px] bg-primary flex items-center justify-center cursor-pointer">
                     <p className="text-white uppercase text-[20px]">
                         <span className="font-light">Wonder</span>{" "}
                         <span className="font-bold">. Legal</span>{" "}

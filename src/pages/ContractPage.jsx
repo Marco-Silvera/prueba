@@ -13,8 +13,13 @@ export default function ContractPage() {
     const location = useLocation();
 
     console.log("STEP:", step);
+    const totalStep = 20;
 
     const currentStep = step ? Number(step) : 0;
+
+    let progressBar = Math.round((currentStep / totalStep) * 100);
+
+    console.log(progressBar);
 
     if (Number.isNaN(currentStep)) {
         navigate("/contrato", { replace: true });
@@ -71,17 +76,25 @@ export default function ContractPage() {
                     </aside>
                     {/* Centro: contrato */}
                     <main className="flex-1 p-8 overflow-y-auto sticky top-4 bg-white rounded-2xl border border-gray-200 max-h-[calc(100vh-130px)] scrollbar-thin">
-                        <ContractPreview 
+                        <ContractPreview
                             currentStep={currentStep}
                             onFieldHover={setHoveredFieldId}
                         />
                     </main>
 
                     {/* Derecha: progreso */}
-                    <aside className="w-full max-w-[220px] p-6 border-l sticky top-4 overflow-y-auto scrollbar-thin">
-                        <h3 className="font-semibold mb-4">Progreso</h3>
-                        <div className="text-sm text-gray-600">
-                            Paso {currentStep} de 3
+                    <aside className="w-full max-w-[220px] p-[10px] sticky top-4 overflow-y-auto scrollbar-thin">
+                        <h3 className="font-semibold text-sm mb-4">
+                            Progresión:
+                        </h3>
+                        <div className="w-[200px] bg-primary h-[22px] flex items-center justify-start p-[3px] rounded-lg relative">
+                            <p className="absolute pl-[5px] text-white font-medium text-xs leading-[12px]">
+                                {progressBar}%
+                            </p>
+                            <div
+                                className="h-full bg-gray-400 transition-all duration-500 ease-out rounded-lg"
+                                style={{ width: `${progressBar}%` }}
+                            ></div>
                         </div>
                     </aside>
                 </div>

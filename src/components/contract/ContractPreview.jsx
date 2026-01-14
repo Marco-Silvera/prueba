@@ -10,10 +10,10 @@ export default function ContractPreview({ currentStep, onFieldHover }) {
     const { registerRef } = useContractRefs();
 
     const [highlightFurniture, setHighlightFurniture] = useState(false);
+    const [highlightPayment, setHighlightPayment] = useState(false);
 
     useEffect(() => {
         if (data.arrender === true || data.arrender === false) {
-            scrollTo("furnitureClause");
             setHighlightFurniture(true);
 
             const timer = setTimeout(() => {
@@ -22,7 +22,19 @@ export default function ContractPreview({ currentStep, onFieldHover }) {
 
             return () => clearTimeout(timer);
         }
-    }, [data.arrender, scrollTo]);
+    }, [data.arrender]);
+
+    useEffect(() => {
+        if (data.paymentMethod) {
+            setHighlightPayment(true);
+
+            const timer = setTimeout(() => {
+                setHighlightPayment(false);
+            }, 2000);
+
+            return () => clearTimeout(timer);
+        }
+    }, [data.paymentMethod]);
 
     return (
         <article className="max-w-[720px] mx-auto text-[14px] leading-6">
@@ -147,8 +159,8 @@ export default function ContractPreview({ currentStep, onFieldHover }) {
                     )}
                 </span>
             </p>
-            <p>1
-                La Vivienda{" "}
+            <p>
+                1 La Vivienda{" "}
                 {data.arrender === true && (
                     <span
                         id="furnitureClause2"
@@ -211,6 +223,111 @@ export default function ContractPreview({ currentStep, onFieldHover }) {
                 </span>{" "}
                 que el Arrendatario pagará al Arrendador cada mes,
                 anticipadamente.
+            </p>
+            <p>
+                El pago de cada una de las mensualidades se realizará dentro de
+                los siete (7) primeros días del mes.
+            </p>
+            {data.paymentMethod === "other" && (
+                <span
+                    id="paymentClause"
+                    ref={(el) => registerRef("paymentClause", el)}
+                    className={`
+                        transition-colors duration-500
+                        ${highlightPayment ? "bg-green-200" : ""}
+                    `}
+                >
+                    Las partes acuerdan como medio de pago la siguiente manera:
+                    <br />
+                    <ContractField
+                        id="amount"
+                        step={2}
+                        value={data.amount}
+                        currentStep={currentStep}
+                        registerRef={registerRef}
+                    />
+                    <br />
+                    El Arrendatario entregará la cantidad indicada en el párrafo
+                    precedente y el Arrendador le hará entrega de un recibo del
+                    pago que acredita la cantidad y conceptos en los que el
+                    Arrendatario realiza el pago.
+                </span>
+            )}
+            {data.paymentMethod === "cash" && (
+                <span
+                    id="paymentClause2"
+                    ref={(el) => registerRef("paymentClause2", el)}
+                    className={`
+                        transition-colors duration-500
+                        ${highlightPayment ? "bg-green-200" : ""}
+                    `}
+                >
+                    El pago se realizará en efectivo en la Vivienda. El
+                    Arrendatario entregará la cantidad indicada en el párrafo
+                    precendente y el Arrendador le hará entrega de un recibo del
+                    pago que acredita la cantidad y conceptos en los que el
+                    Arrendatario realiza el pago.
+                </span>
+            )}
+            {data.paymentMethod === "transfer" && (
+                <span
+                    id="paymentClause2"
+                    ref={(el) => registerRef("paymentClause2", el)}
+                    className={`
+                        transition-colors duration-500
+                        ${highlightPayment ? "bg-green-200" : ""}
+                    `}
+                >
+                    El pago se realizará mediante ingreso o transferencia
+                    bancaria a favor de la cuenta cuyos datos son:
+                    <br />
+                    <span>
+                        <span className="font-medium">Entidad bancaria:</span>
+                        <ContractField
+                            id="amount"
+                            step={2}
+                            value={data.amount}
+                            currentStep={currentStep}
+                            registerRef={registerRef}
+                        />
+                    </span>
+                    <br />
+                    <span>
+                        <span className="font-medium">
+                            IBAN identificador de la cuenta:
+                        </span>
+                        <ContractField
+                            id="amount"
+                            step={2}
+                            value={data.amount}
+                            currentStep={currentStep}
+                            registerRef={registerRef}
+                        />
+                    </span>
+                    <br />
+                    <span>
+                        <span className="font-medium">
+                            Titular de la cuenta:
+                        </span>
+                        <ContractField
+                            id="amount"
+                            step={2}
+                            value={data.amount}
+                            currentStep={currentStep}
+                            registerRef={registerRef}
+                        />
+                    </span>
+                    <br />
+                    <span>
+                        El comprobante de ingreso o transferencia resultante de
+                        la realización de dicha transacción servirá como
+                        comprobante o justificante del pago efectuado.
+                    </span>
+                </span>
+            )}
+            <p>
+                Cualquier cambio en la forma de pago deberá ser acordada por
+                escrito por ambas partes.
             </p>
         </article>
     );

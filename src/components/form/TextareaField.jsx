@@ -1,4 +1,4 @@
-import HelpTooltip from "../HelpTooltip";
+import HelpTooltip from "./HelpTooltip";
 
 export default function TextareaField({
     id,

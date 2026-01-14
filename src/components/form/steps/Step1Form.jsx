@@ -3,7 +3,7 @@ import { useContractStore } from "../../../store/contractStore";
 import DateField from "../DateField";
 import FormField from "../FormField";
 import RadioField from "../RadioField";
-import TextareaField from "./TextareaField";
+import TextareaField from "../TextareaField";
 
 function Step1Form({ openTooltipId, setOpenTooltipId, hoveredFieldId }) {
     const data = useContractStore((state) => state.data);
