@@ -4,22 +4,22 @@
     body {
         font-family: "Roboto", system-ui, sans-serif;
     }
-    
+
     /* Scrollbar personalizado */
     .scrollbar-thin::-webkit-scrollbar {
         width: 6px;
     }
-    
+
     .scrollbar-thin::-webkit-scrollbar-track {
         background: #f4f4f4;
         border-radius: 10px;
     }
-    
+
     .scrollbar-thin::-webkit-scrollbar-thumb {
         background: #d3d3d3;
         border-radius: 10px;
     }
-    
+
     .scrollbar-thin::-webkit-scrollbar-thumb:hover {
         background: #b3b3b3;
     }
@@ -27,12 +27,13 @@
 
 @theme {
     /* Colores personalizados Gretta */
-    --color-primary: #191E55;
+    --color-primary: #191e55;
     --color-secondary: #01d29a;
-    --color-tertiary: #08ECAF;
+    --color-tertiary: #08ecaf;
+    --color-border-container: #f1f1f1;
     --color-gray-100: #d3d3d3;
     --color-gray-200: #f4f4f4;
     --color-gray-300: #b3b3b3;
-    --color-gray-400: #9A9CA1;
-    --color-highlight: #FCC90D;
+    --color-gray-400: #9a9ca1;
+    --color-highlight: #fcc90d;
 }

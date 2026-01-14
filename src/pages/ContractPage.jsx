@@ -49,7 +49,7 @@ export default function ContractPage() {
 
                 <div className="flex w-full max-w-[1482px] self-center gap-4 items-start">
                     {/* Izquierda: formulario */}
-                    <aside className="w-full bg-white max-w-[362px] p-[10px] rounded-[8px] border border-[#f1f1f1]">
+                    <aside className="w-full bg-white max-w-[362px] p-[10px] rounded-[8px] border border-border-container">
                         {currentStep === 0 && (
                             <Step1Form
                                 openTooltipId={openTooltipId}
@@ -75,7 +75,7 @@ export default function ContractPage() {
                         />
                     </aside>
                     {/* Centro: contrato */}
-                    <main className="flex-1 p-8 overflow-y-auto sticky top-4 bg-white rounded-2xl border border-gray-200 max-h-[calc(100vh-130px)] scrollbar-thin">
+                    <main className="flex-1 p-8 overflow-y-auto sticky top-4 bg-white rounded-2xl border border-border-container max-h-[calc(100vh-130px)] scrollbar-thin">
                         <ContractPreview
                             currentStep={currentStep}
                             onFieldHover={setHoveredFieldId}
