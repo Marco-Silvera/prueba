@@ -48,7 +48,7 @@ export default function ContractPage() {
                 </h1>
 
                 <div className="flex w-full max-w-[1482px] self-center gap-4 items-start">
-                    {/* Izquierda: formulario */}
+                    {/* Formulario paso a paso */}
                     <aside className="w-full bg-white max-w-[362px] p-[10px] rounded-[8px] border border-border-container">
                         {currentStep === 0 && (
                             <Step1Form
@@ -74,7 +74,7 @@ export default function ContractPage() {
                             NextStep={NextStep}
                         />
                     </aside>
-                    {/* Centro: contrato */}
+                    {/* Preview de contrato */}
                     <main className="flex-1 p-8 overflow-y-auto sticky top-4 bg-white rounded-2xl border border-border-container max-h-[calc(100vh-130px)] scrollbar-thin">
                         <ContractPreview
                             currentStep={currentStep}
@@ -82,7 +82,7 @@ export default function ContractPage() {
                         />
                     </main>
 
-                    {/* Derecha: progreso */}
+                    {/* Progreso */}
                     <aside className="w-full max-w-[220px] p-[10px] sticky top-4 overflow-y-auto scrollbar-thin">
                         <h3 className="font-semibold text-sm mb-4">
                             Progresión:

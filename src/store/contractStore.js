@@ -1,6 +1,26 @@
 import { create } from "zustand";
 
-export const useContractStore = create((set) => ({
+// Cargar datos del localStorage
+const loadFromLocalStorage = () => {
+    try {
+        const saved = localStorage.getItem("contractData");
+        return saved ? JSON.parse(saved) : {};
+    } catch (err) {
+        console.error("Error cargando datos del localStorage:", err);
+        return {};
+    }
+};
+
+// Guardar datos en localStorage
+const saveToLocalStorage = (data) => {
+    try {
+        localStorage.setItem("contractData", JSON.stringify(data));
+    } catch (err) {
+        console.error("Error guardando datos en localStorage:", err);
+    }
+};
+
+export const useContractStore = create((set, get) => ({
     // Paso actual
     step: 1,
     totalSteps: 20,
@@ -9,17 +29,26 @@ export const useContractStore = create((set) => ({
     data: {
         address: "",
         meters: "",
-        // ...
+        characteristics: "",
+        arrender: null,
+        reference: "",
+        preiod: "",
+        startDate: "",
+        amount: "",
+        ...loadFromLocalStorage(),
     },
 
     // Actualizar un campo
-    updateField: (field, value) =>
-        set((state) => ({
-            data: {
+    updateField: (field, value) => {
+        set((state) => {
+            const newData = {
                 ...state.data,
                 [field]: value,
-            },
-        })),
+            };
+            saveToLocalStorage(newData); // <-- guarda cada cambio
+            return { data: newData };
+        });
+    },
 
     // Navegación
     nextStep: () =>
