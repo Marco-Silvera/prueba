@@ -1,26 +1,3 @@
-// import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-// import ContractPage from "../pages/ContractPage";
-
-// export default function AppRouter() {
-//     return (
-//         <BrowserRouter>
-//             <Routes>
-//                 {/* Paso inicial */}
-//                 <Route path="/" element={<Navigate to="/contrato" replace />} />
-
-//                 {/* Paso 0 */}
-//                 <Route path="/contrato" element={<ContractPage />} />
-
-//                 {/* Pasos siguientes */}
-//                 <Route path="/contrato-:step" element={<ContractPage />} />
-//             </Routes>
-//         </BrowserRouter>
-//     );
-// }
-
-
-
-
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import ContractPage from "../pages/ContractPage";
 
